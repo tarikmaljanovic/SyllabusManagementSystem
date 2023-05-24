@@ -1,0 +1,292 @@
+@import '../global.scss';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  .section {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: $primary_color;
+    margin: 7% 0% 3% 0%;
+    @include mobile {
+      margin: 20% 0% 20% 0%;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .course-search {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-direction: column;
+      padding: 25px 0px 5px 0px;
+      width: 75%;
+      color: white;
+      .search-label {
+        padding-left: 40px;
+      }
+      .control {
+        width: 100%;
+        .icon {
+          svg {
+            width: 25px;
+            height: 25px;
+            color: $secondary_color;
+          }
+        }
+        .input {
+          color: $grey_color;
+          border: none;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        .desktop-search {
+          display: block;
+          @include mobile {
+            display: none;
+          }
+        }
+        .mobile-search {
+          display: none;
+          @include mobile {
+            display: block;
+          }
+        }
+      }
+    }
+    .semester-search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 75%;
+      @include mobile {
+        flex-direction: column;
+      }
+      .semester-search-label {
+        text-align: center;
+        width: 100%;
+        padding: 0px 0px 5px 0px;
+        color: white;
+        font-size:x-large;
+        text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin: 1%;
+        @include mobile {
+          margin: 5%;
+        }
+      }
+      .form-section {
+        width: 100%;
+        padding-bottom: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        @include mobile {
+          flex-direction: column;
+        }
+        .dropdown {
+          @include mobile {
+            padding: 10px;
+            width: 100%;
+          }
+          .dropdown-trigger{
+            @include mobile {
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+            }
+            .select-label {
+              padding-left: 16px;
+              color: white;
+              @include mobile {
+                padding: 0;
+              }
+            }
+            .button {
+              display: flex;
+              justify-content: space-between;
+              width: 193px;
+              border: none;
+              border-radius: 15px;
+              box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+              color: $grey_color;
+              @include mobile {
+                font-size: 12px;
+                width: 121px;
+                max-width: 121px;
+                border-radius: 10px;
+              }
+              svg {
+                color: #AEADAD;
+                width: 26px;
+                height: 20px;
+                transition: 0.3s ease-in-out;
+              }
+            }
+          }
+          .dropdown-menu {
+            .dropdown-content {
+              animation: growDown 300ms ease-in-out forwards;
+              transform-origin: top center;
+              border-radius: 15px;
+              @include mobile {
+                width: 121px;
+              }
+              .dropdown-item.selected {
+                background-color: #D1D1D1;
+              }
+              .dropdown-item:hover {
+                background-color: #e2e2e2;
+                cursor: pointer;
+              }
+              .dropdown-item:first-child {
+                border-radius: 10px 10px 0px 0px;
+              }
+              .dropdown-item:last-child {
+                border-radius: 0px 0px 10px 10px;
+              }
+            }
+          }        
+        }
+        .dropdown.is-active {
+          svg {
+            transform: rotate(180deg);
+            transition: 0.3s ease-in-out;
+          }
+          .dropdown-menu {
+            @include mobile {
+              left: auto;
+              right: 0;
+              padding: 4px 10px 0px 0px;
+              display: flex;
+              justify-content: flex-end;
+            }
+          }
+        }
+        .semester-picker {
+          height: 100%;
+          display: flex;
+          justify-content: space-around;
+          align-items: end;
+          flex-direction: column;
+          @include mobile {
+            display: none;
+          }
+          .semester-option {
+            color: white;
+            display: flex;
+            flex-direction: row;
+            margin: 5px 0px 10px 0px;
+            p {
+              padding-right: 20px;
+            }
+            input[type=radio] {
+              accent-color: $grey_color;
+            }
+          }
+        }
+        .semester-picker.mobile {
+          display: none;
+          @include mobile {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px;
+            .left {
+              width: 121px;
+              .buttons {
+                width: auto;
+                display: flex;
+                flex-direction: column;
+                input {
+                  height: 30px;
+                }
+              }
+            }
+            .right {
+              .labels {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                p {
+                  padding: 0;
+                  height: 30px;
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .semester-table {
+    display: flex;
+    justify-content: center;
+    @include mobile {
+      padding: 0px 20px 20px 20px;
+      font-size: 12px;
+    }
+    .semester-list {
+     .semester-info {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      display: flex;
+      justify-content: space-between;
+      background-color: $secondary_color;
+      color: white;
+      padding: 15px;
+      border-radius: 20px 20px 0px 0px;
+      .semester-info-left {
+        display: inline;
+      }
+      .semester-info-right {
+        display: inline;
+      }
+     }
+     .course-list{
+        max-height: 324px;
+        overflow: scroll;
+        border-radius: 0px 0px 20px 20px;
+        .course-row {
+          display: flex;
+          justify-content: space-between;
+          padding: 15px;
+          cursor: pointer;
+          .course-info {
+            display: inline;
+            padding-right: 20px;
+          }
+          .ects {
+            display: inline;
+          }
+        }
+        .course-row:nth-child(even) {
+          background-color: #D1D1D1;
+        }
+        .course-row:nth-child(odd) {
+          background-color: #ECECEC;
+        }
+        .course-row:hover {
+          background-color: #c1c1c1;
+        }
+      }
+    }
+  }
+}
+
+@keyframes growDown {
+  0% {
+      transform: scaleY(0)
+  }
+  80% {
+      transform: scaleY(1.1)
+  }
+  100% {
+      transform: scaleY(1)
+  }
+}

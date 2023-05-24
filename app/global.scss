@@ -1,0 +1,13 @@
+@import 'https://fonts.googleapis.com/css2?family=Roboto&display=swap';
+@import '../node_modules/bulma/bulma.sass';
+
+$primary_color: #324f9a;
+$secondary_color: #7A94D7;
+$accent_color: #FFD390;
+$grey_color: #565656;
+$hover_color: #FFB94F;
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}

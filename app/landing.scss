@@ -1,0 +1,125 @@
+@import './global.scss';
+
+.container {
+  @include desktop {
+    background-image: url('../public/desktop-bg.png');
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size:contain; /* Resize the background image to cover the entire container */
+  }
+  @include mobile {
+    background-image: url('../public/mobile-bg.png');
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: contain; /* Resize the background image to cover the entire container */
+  }
+  background-color: $primary_color;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding-top: 4%;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  .mobile-logo {
+    display: none;
+    @include mobile {
+      display: block;
+    }
+  }
+  .desktop-logo {
+    @include mobile {
+      display: none;
+    }
+  }
+  .middleware-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include mobile {
+      width: 85%;
+    }
+    @include desktop {
+      width: 25%;
+    }
+    .input {
+      margin: 10px;
+      font-family: 'Roboto', sans-serif;
+      color: $grey_color;
+    }
+    .form-buttons {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: 35px;
+      .button {
+        width: 35%;
+        font-family: 'Roboto', sans-serif;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        @include mobile {
+          width: 40%;
+        }
+      }
+      .primary-button {
+        background-color: $accent_color;
+        transition: ease-in-out 200ms;
+        border: none;
+        color: $grey_color;
+        a {
+          text-decoration: none;
+          color: $grey_color;
+        }
+      }
+      .primary-button:hover {
+        background-color: #FFB94F;
+        transition: ease-in-out 200ms;
+      }
+      .primary-button:active {
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+        transition: ease-in-out 200ms;
+      }
+      .secondary-button {
+        border: solid #FFB94F 2px;
+        transition: ease-in-out 200ms;
+        color: $grey_color;
+        a {
+          text-decoration: none;
+          color: $grey_color;
+        }
+      }
+      .secondary-button:hover {
+        background-color: #D8D8D8;
+        transition: ease-in-out 200ms;
+      }
+      .secondary-button:active {
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+        transition: ease-in-out 200ms;
+      }
+    }
+    .tertiary-button {
+      font-family: 'Roboto', sans-serif;
+      text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      margin-top: 25px;
+      font-size: 20px;
+      color: $accent_color;
+      transition: ease-in-out 200ms;
+      cursor: pointer;
+      a {
+        text-decoration: none;
+        color: $grey_color;
+      }
+    }
+    .tertiary-button:hover {
+      color: #FFB94F;
+      transition: ease-in-out 200ms;
+    }
+    .tertiary-button:active {
+      text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+      transition: ease-in-out 200ms;
+    }
+  }
+
+
+}
