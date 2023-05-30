@@ -4,6 +4,7 @@ import { IoSearchSharp } from "react-icons/io5";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { useEffect, useState } from 'react';
 import { useRef } from 'react';
+import Sidebar from '../components_/sidebar';
 import './search.scss';
 
 export default function Search() {
@@ -13,7 +14,12 @@ export default function Search() {
   const [year, setYear] = useState('')
   const [list, setList] = useState(false)
   const containerRef = useRef(null)
+  const [sidebar, setSidebar] = useState(false)
  
+  const sidebarHandler = () => {
+    setSidebar(!sidebar)
+  }
+
   const valueCheck = event => {
     setSearchValue(event.target.value)
   }
@@ -30,11 +36,11 @@ export default function Search() {
 
   return (
     <>
-      <div className='container is-fluid p-0'>
-        <Navbar/>
+      <div className={`container is-fluid p-0 ${sidebar ? 'active-sidebar' : ''}`}>
+        <Navbar handler={sidebarHandler}/>
         <section className="section is-medium p-0">
           <form className='course-search'>
-            <label className='search-label'>Course Search:</label>
+            <label className={`search-label ${searchValue ? '' : 'is-hidden' }`}>Course Search:</label>
             <div className="control has-icons-left">
               <input className="input is-rounded mobile-search" type="search" placeholder="Search for a Course:" onChange={valueCheck}/>
               <input className="input is-rounded desktop-search" type="search" placeholder="Search for a Course: (ex. IT 204 Operating Systems)" onChange={valueCheck}/>
@@ -171,8 +177,9 @@ export default function Search() {
             </div>
           </div>
         </div>
+        <Sidebar sidebarState={sidebar} handler={sidebarHandler}/>
+        <div className={`background ${sidebar ? '' : 'is-hidden'}`}></div>
       </div>
-
     </>
   )
 }

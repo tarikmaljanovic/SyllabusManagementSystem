@@ -6,8 +6,9 @@ import UserIcon from '../../public/UserIcon.png';
 import { useState } from 'react';
 import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
 import { IoSearchSharp } from "react-icons/io5";
-import { MdLogout } from "react-icons/md";
 import { RxTextAlignJustify } from "react-icons/rx";
+import { BsPersonFillAdd } from "react-icons/bs";
+import { FiLogIn } from "react-icons/fi";
 
 
 export default function Navbar(handler) {
@@ -28,22 +29,22 @@ export default function Navbar(handler) {
                 <div className="dropdown-content">
                   <div className='inner'>
                     <div className="dropdown-item">
-                      <FaUserAlt/>
-                      <p className='dropdown-item-label'>My Profile</p>
+                      <FiLogIn/>
+                      <p className='dropdown-item-label'>Login</p>
+                    </div>
+                    <div className="dropdown-item">
+                      <BsPersonFillAdd/>
+                      <p>Create Account</p>
                     </div>
                     <div className="dropdown-item">
                       <IoSearchSharp/>
                       <p>Search Page</p>
                     </div>
-                    <div className="dropdown-item">
-                      <MdLogout/>
-                      <p>Logout</p>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          <h2 className='user-name' onClick={() => setDropdown(!dropdown)}>Tarik Maljanović</h2>
+          <h2 className='user-name' onClick={() => setDropdown(!dropdown)}>Guest Mode</h2>
           <Image src={UserIcon.src} width={60} height={0} className='user-icon' onClick={() => setDropdown(!dropdown)}></Image>
         </div>
         <div className='right-side mobile'>

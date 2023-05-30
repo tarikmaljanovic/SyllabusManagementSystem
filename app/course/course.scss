@@ -1,0 +1,340 @@
+@import '../global.scss';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  .section {
+    display: flex;
+    flex-direction: row;
+    @include until-widescreen {
+      flex-direction: column;
+    }
+    .staff-section {
+      min-width: 350px;
+      padding: 0px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include until-widescreen {
+        min-width: none;
+        width: 100%;
+        border: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 10px;
+      }
+      .head {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+        @include until-widescreen {
+          display: none;
+        }
+        .head-label {
+          color: $primary_color;
+          font-size: 25px;
+          text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        svg {
+          width: 45px;
+          height: 45px;
+          color: $accent_color;
+          padding-right: 10px;
+        }
+      }
+      .staff-section-body {
+        min-width: 350px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        @include until-widescreen {
+          flex-direction: row;
+          overflow-x: scroll ;
+          min-width: none;
+        }
+        .member {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 40px;
+          @include until-widescreen {
+            margin: 0;
+          }
+          .general {
+            width: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            @include until-widescreen {
+              flex-direction: column;
+              margin: 0px 20px 20px 0px;
+              height: 100%;
+            }
+            .general-info {
+              padding-left: 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              justify-content: space-between;
+              @include until-widescreen {
+                padding-top: 10px;
+              }
+              .upper {
+                .rank {
+                  font-size: 16px;
+                  color: $primary_color;
+                  @include until-widescreen {
+                    font-size: 12px;
+                  }
+                }
+                .name {
+                  font-size: 19px;
+                  color: $primary_color;
+                  @include until-widescreen {
+                    font-size: 14px;
+                  }
+                }
+              }
+              .button {
+                width: 150px;
+                height: 30px;
+                background-color: $accent_color;
+                border: none;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                @include until-widescreen {
+                  font-size: 13px;
+                  width: 120px;
+                  height: 25px;
+                }
+              }
+              .button:hover {
+                background-color: #FFB94F;
+              }
+              .button:active {
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 0px;
+              }
+            }
+          }
+          .more-info {
+            margin: 20px 0px;
+            border: $secondary_color solid 2px;
+            border-radius: 15px;
+            padding: 10px;
+            width: 300px;
+            animation: growDown 300ms ease-in-out forwards;
+            transform-origin: top center;
+            @include until-widescreen {
+              width: 100%;
+            }
+            .info-label {
+              color: $primary_color;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+    .course-section {
+      width: 100%;
+      padding: 0px 20px;
+      border-left: $secondary_color solid 2px;
+      @include until-widescreen {
+        width: 100%;
+        border: none;
+        padding: 0px 10px;
+      }
+      .inner {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        .course-title {
+          padding: 1.5%;
+          width: 100%;
+          font-size: 30px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          background-color: $primary_color;
+          text-align: center;
+          color: white;
+          border-radius: 15px;
+          @include until-widescreen {
+            display: none;
+          }
+        }
+        .course-cards {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          .info-card {
+            display: flex;
+            flex-direction: row;
+            width: 10%;
+            margin: 5px 10px;
+            flex: 1 1 30%;
+            border: $secondary_color solid 2px;
+            border-radius: 10px;
+            @include until-widescreen {
+              flex: 1 1 30%;
+              margin: 7px;
+            }
+            .slice {
+              height: 60px;
+              width: 50%;
+              border-radius: 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: $primary_color;
+              font-size: 17px;
+              @include until-widescreen {
+                height: 30px;
+              }
+            }
+            .left {
+              border-radius: 10px 0px 0px 10px;
+              background-color: #ECECEC;
+              padding: 20px;
+              font-weight: 600;
+              border-right: $secondary_color solid 2px;
+              @include until-widescreen {
+                font-size: 13px;
+              }
+            }
+            .right {
+              background-color: white;
+              padding: 20px;
+              @include until-widescreen {
+                font-size: 11px;
+              }
+            }
+          }
+        }
+        .course-content {
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          border: $secondary_color solid 2px;
+          margin: 20px 10px 0px 0px;
+          border-radius: 10px;
+          width: 100%;
+          .head {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 5px;
+            .left {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              .left-label {
+                padding-right: 10px;
+                font-size: 20px;
+                font-weight: 600;
+                color: $primary_color;
+                text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+              }
+              svg {
+                color: $accent_color;
+                width: 30px;
+                height: 30px;
+              }
+            }
+            .right {
+              display: flex;
+              align-items: center;
+              svg {
+                width: 30px;
+                height: 30px;
+                color: $accent_color;
+                cursor: pointer;
+              }
+            }
+          }
+          .text {
+            @include until-widescreen {
+              font-size: 16px;
+            }
+          }
+        }
+        .course-list {
+          margin: 20px 10px 0px 0px;
+          width: 100%;
+          .head {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border: $secondary_color solid 2px;
+            border-radius: 10px 10px 0px 0px;
+            .left {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              .left-label {
+                padding-right: 10px;
+                font-size: 20px;
+                font-weight: 600;
+                color: $primary_color;
+                text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+              }
+              svg {
+                color: $accent_color;
+                width: 30px;
+                height: 30px;
+              }
+            }
+            .right {
+              display: flex;
+              align-items: center;
+              svg {
+                width: 30px;
+                height: 30px;
+                color: $accent_color;
+                cursor: pointer;
+              }
+            }
+          }
+          .list-body {
+            border: $secondary_color solid 2px;
+            border-top: none;
+            border-radius: 0px 0px 10px 10px;
+
+            .list-item {
+              padding: 10px 20px;
+              font-size: 18px;
+              .item-label {
+                font-weight: 600;
+              }
+            }
+            .list-item:nth-child(odd) {
+              background-color: #ECECEC;
+            }
+            .list-item:last-child {
+              border-radius: 0px 0px 10px 10px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+@keyframes growDown {
+  0% {
+      transform: scaleY(0)
+  }
+  80% {
+      transform: scaleY(1.1)
+  }
+  100% {
+      transform: scaleY(1)
+  }
+}

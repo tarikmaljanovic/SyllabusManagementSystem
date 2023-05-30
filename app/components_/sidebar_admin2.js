@@ -6,6 +6,7 @@ import { RxCross2 } from "react-icons/rx";
 import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
 import { IoSearchSharp } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
+import { MdModeEdit } from "react-icons/md";
 
 export default function Sidebar(props) {
   const sidebarHandler = () => {
@@ -17,7 +18,7 @@ export default function Sidebar(props) {
         <div className="upper">
           <RxCross2 onClick={sidebarHandler}/>
           <Image src={MLv2.src} width={200} height={200}></Image>
-          <h2 className="user-name">Tarik Maljanović</h2>
+          <h2 className="user-name">Dželila Mehanović</h2>
             <button class="button is-rounded">
               <span>My Profile</span>
               <FaUserAlt/>
@@ -25,6 +26,10 @@ export default function Sidebar(props) {
             <button class="button is-rounded">
               Search Page
               <IoSearchSharp/>
+            </button>
+            <button class="button is-rounded">
+              Edit Syllabus
+              <MdModeEdit/>
             </button>
         </div>
         <div className="lower">

@@ -17,7 +17,7 @@ export default function Sidebar(props) {
         <div className="upper">
           <RxCross2 onClick={sidebarHandler}/>
           <Image src={MLv2.src} width={200} height={200}></Image>
-          <h2 className="user-name">Tarik Maljanović</h2>
+          <h2 className="user-name">Dželila Mehanović</h2>
             <button class="button is-rounded">
               <span>My Profile</span>
               <FaUserAlt/>
@@ -28,7 +28,7 @@ export default function Sidebar(props) {
             </button>
         </div>
         <div className="lower">
-          <button class="button is-rounded">
+          <button className="button is-rounded">
             Logout
             <MdLogout/>
           </button>

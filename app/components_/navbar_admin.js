@@ -43,7 +43,7 @@ export default function Navbar(handler) {
                 </div>
               </div>
             </div>
-          <h2 className='user-name' onClick={() => setDropdown(!dropdown)}>Tarik Maljanović</h2>
+          <h2 className='user-name' onClick={() => setDropdown(!dropdown)}>Dželila Mehanović</h2>
           <Image src={UserIcon.src} width={60} height={0} className='user-icon' onClick={() => setDropdown(!dropdown)}></Image>
         </div>
         <div className='right-side mobile'>

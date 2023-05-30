@@ -44,10 +44,20 @@
     @include desktop {
       width: 25%;
     }
+    .input-label {
+      color: white;
+      text-align: left;
+      align-self: flex-start;
+      padding-left: 17px;
+    }
     .input {
       margin: 10px;
       font-family: 'Roboto', sans-serif;
       color: $grey_color;
+    }
+    .input-wrong {
+      border: red solid 2px;
+      color: red;
     }
     .form-buttons {
       display: flex;

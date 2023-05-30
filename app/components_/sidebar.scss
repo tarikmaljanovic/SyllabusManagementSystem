@@ -1,0 +1,104 @@
+@import '../global.scss';
+
+.sidebar {
+  transition: 0.2s ease-in-out;
+  transform: translate(0%);
+
+  @include desktop {
+    display: none;
+  }
+  background-image: url('../../public/sidebar-bg.png');
+  background-color: #FFFFFF;
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 80%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 31;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 20px;
+  svg {
+    align-self: flex-end;
+    width: 24px;
+    height: 24px;
+    color: $accent_color;
+    cursor: pointer;
+  }
+  .upper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    .user-name {
+      font-size: 30px;
+      padding: 20px 0px 10px 0px;
+      text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      color: $primary_color;
+    }
+    .button {
+      border: none;
+      width: 70%;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      margin: 10px;
+      background-color: $accent_color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      svg {
+        color: $grey_color;
+        margin-left: 5px;
+        align-self: center;
+      }
+    }
+    .button:hover {
+      background-color: #FFB94F;
+    }
+    .button:active {
+      background-color: #FFB94F;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 0px;
+    }
+  }
+  .lower {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    .button {
+      border: 3px solid $accent_color;
+      width: 70%;
+      margin: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      svg {
+        color: $grey_color;
+        margin-left: 5px;
+        align-self: center;
+      }
+    }
+    .button:hover {
+      background-color: #D8D8D8;
+    }
+    .button:active {
+      background-color: #D8D8D8;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 0px;
+    }
+    .copyright {
+      color: #9E9E9E;
+      font-size: 14px;
+    }
+  }
+}
+.hidden {
+  transition: 0.2s ease-in-out;
+  transform: translate(-100%);
+}

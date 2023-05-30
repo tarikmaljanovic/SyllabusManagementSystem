@@ -1,0 +1,148 @@
+@import '../global.scss';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: scroll;
+  .section {
+    padding: 5% 10% 5% 10%;
+    @include mobile {
+      padding: 10% 5% 10% 5%;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      padding-bottom: 2%;
+      .user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .user-info {
+          padding-left: 30px;
+          width: auto;
+          @include mobile {
+            padding-left: 10px;
+          }
+          .first_name {
+            font-size: 32px;
+            color: $grey_color;
+            text-align: left;
+            @include mobile {
+              font-size: 15px;
+            }
+          }
+          .department {
+            font-size: 16px;
+            color: $primary_color;
+            text-align: left;
+            @include mobile {
+              font-size: 12px;
+            }
+          }
+        }
+        .profile-picture {
+          @include mobile {
+            width: 75px;
+            height: 75px;
+          }
+        }
+      }
+      .button {
+        background-color: $accent_color;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border: none;
+        color: $grey_color;
+        @include mobile {
+          width: 120px;
+          height: 28px;
+          font-size: 10px;
+        }
+      }
+      .button:hover {
+        background-color: #FFB94F;
+      }
+      .button:active {
+        background-color: #FFB94F;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 0px;
+      }
+    }
+    .cards-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: row;
+      @include mobile {
+        flex-direction: column;
+      }
+      .card-column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 0.5% 0% 0.5%;
+        .info-card {
+          width: 100%;
+          padding: 2% 4%;
+          margin: 1%;
+          border: $secondary_color solid 2px;
+          border-radius: 10px;
+          .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            padding-bottom: 2%;
+            .section-title {
+              font-size: 23px;
+              color: $primary_color;
+            }
+            svg {
+              width: 32px;
+              height: 32px;
+              color: $accent_color;
+              cursor: pointer;
+            }
+            svg:hover {
+              color: #FFB94F;
+            }
+          }
+          .section-body {
+            .section-element {
+              .element-name {
+                font-size: 17px;
+                font-weight: 600;
+              }
+              .element-text {
+                font-size: 14px;
+              }
+            }
+            .section-link {
+              color: $primary_color;
+              font-size: 17px;
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+  .background {
+    @include desktop {
+      display: none;
+    }
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    z-index: 30;
+    
+    background: rgba(217, 217, 217, 0.4);
+  }
+}
+.container.active-sidebar {
+  overflow: hidden;
+}
