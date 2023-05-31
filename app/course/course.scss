@@ -10,6 +10,17 @@
     @include until-widescreen {
       flex-direction: column;
     }
+    .course-title-mobile {
+      margin: 0px 10px 20px 10px;
+      background-color: $primary_color;
+      color:white;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      @include widescreen {
+        display: none;
+      }
+    }
     .staff-section {
       min-width: 350px;
       padding: 0px 20px;
@@ -173,7 +184,7 @@
         display: none;
       }
       .rating-label {
-        font-size: 15px;
+        font-size: 20px;
         font-weight: 600;
         color: $primary_color;
         text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

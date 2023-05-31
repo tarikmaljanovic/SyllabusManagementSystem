@@ -74,18 +74,16 @@ export default function Course() {
     linkedIn: "https://shorturl.at/ABNR9",
     bio: "Amela Vatreš is the theaching assistant for courses such as Programming I, System Analysis and Design, Human-Computer Interaction, and more. She is also the coordinator for Senior Design Projects."
     },
-    {}
+    {
+
+    }
    ]
-
-
-
-
-  
   return (
     <>
       <div className={`container is-fluid p-0 ${sidebar ? 'active-sidebar' : ''}`}>
       <Navbar handler={sidebarHandler}/>
         <section class="section px-0">
+        <div className='notification p-2 course-title-mobile'>IT 207: Introdcution to Web Programming</div>
           <div className='staff-section'>
             <div className='head'>
               <FaUserCircle/>
