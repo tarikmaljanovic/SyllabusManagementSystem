@@ -16,7 +16,7 @@ export default function Profile() {
   
   return (
     <>
-      <div className='container p-0 is-fluid'>
+      <div className={`container is-fluid p-0 ${sidebar ? 'active-sidebar' : ''}`}>
         <Navbar handler={sidebarHandler}/>
         <section class="section is-large">
           <div className='info-row'>
