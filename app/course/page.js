@@ -189,7 +189,7 @@ export default function Course() {
             <p className='info-row'><span className='info-label'>LinkedIn: </span><a href='https://shorturl.at/ABNR9' className='info-text'>{(staffInfo[current]).linkedIn}</a></p>
             <p className='info-row'><span className='info-label'>Short Bio: </span><span className='info-text'>{(staffInfo[current]).bio}</span></p>
           </div>
-          <div className={`rating ${localStorage.getItem('mode') == 'studet' ? '' : 'disabled'}`}>
+          <div className={`rating ${localStorage.getItem('mode') == 'student' ? '' : 'disabled'}`}>
             <p className='rating-label'>Course Difficulty Rating</p>
             <Rater total={5} rating={4}></Rater>
           </div>
@@ -276,7 +276,7 @@ export default function Course() {
               <div className='course-list'>
                 <div className={`head ${list ? '' : 'is-up'}`}>
                   <div className='left'>
-                    <span className='left-label'>Course Objective</span>
+                    <span className='left-label'>Course Content</span>
                     <MdLibraryBooks/>
                   </div>
                   <div className='right'>

@@ -15,7 +15,7 @@ export default function Page() {
 
   const handleRegistration = () => {
    if(
-    (document.getElementById('reg-name').value) == null ||
+    (document.getElementById('reg-name').value) == '' ||
     (document.getElementById('reg-email').value) == '' ||
     (document.getElementById('reg-pass').value) == '' ||
     (document.getElementById('reg-pass2').value) == ''
