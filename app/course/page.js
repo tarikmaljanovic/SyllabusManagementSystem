@@ -319,7 +319,7 @@ export default function Course() {
                   <p className='list-item'><span className='item-label'>Final Exam: </span><span className='item-text'>30%</span></p>
                 </div>
               </div>
-              <button className={`button is-rounded save-button ${edit ? '' : 'is-hidden'}`}onClick={() =>{ setEdit(false); setAlert(true); setTimeout(() => setAlert(false), 5000)}}>Save Changes</button>
+              <button className={`button is-rounded save-button ${edit ? '' : 'is-hidden'}`} onClick={() =>{ setEdit(false); setAlert(true); setTimeout(() => setAlert(false), 5000)}}>Save Changes</button>
             </div>
           </div>
         </section>

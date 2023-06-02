@@ -100,7 +100,7 @@ export default function Profile() {
                 <div className='section-body'>
                   <div className='section-element'>
                     <p className='element-name'>Email address</p>
-                    <input className={`input is-rounded ${edit ? 'is-hidden' : ''}`} type='text' value='tarik.maljanovic@stu.ibu.edu.ba'></input>
+                    <input className={`input is-rounded ${edit ? 'is-hidden' : ''}`} type='text' value={`${userInfo[user].email}`}></input>
                     <p className={`edit-text ${edit ? '' : 'is-hidden'}`}>{userInfo[user].email}<br/>(Visible to other course participants)</p>
                   </div>
                   <div className='section-element'>
