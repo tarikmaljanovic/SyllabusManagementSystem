@@ -173,6 +173,11 @@
           color: #FFB94F;
         }
       }
+      .rating.disabled {
+        .react-rater-star {
+          color: $grey_color;
+        }
+      }
     }
     .rating {
       margin: 10px 0px;

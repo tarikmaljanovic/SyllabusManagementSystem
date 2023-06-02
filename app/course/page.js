@@ -177,7 +177,7 @@ export default function Course() {
                   <p className='info-row'><span className='info-label'>Short Bio: </span><span className='info-text'>Amela Vatreš is the theaching assistant for courses such as Programming I, System Analysis and Design, Human-Computer Interaction, and more. She is also the coordinator for Senior Design Projects.</span></p>
                 </div>
               </div>
-              <div className='rating'>
+              <div className={`rating ${localStorage.getItem('mode') == 'student' ? '' : 'disabled'}`}>
                 <p className='rating-label'>Course Difficulty Rating</p>
                 <Rater total={5} rating={4}></Rater>
               </div>
@@ -189,7 +189,7 @@ export default function Course() {
             <p className='info-row'><span className='info-label'>LinkedIn: </span><a href='https://shorturl.at/ABNR9' className='info-text'>{(staffInfo[current]).linkedIn}</a></p>
             <p className='info-row'><span className='info-label'>Short Bio: </span><span className='info-text'>{(staffInfo[current]).bio}</span></p>
           </div>
-          <div className='rating'>
+          <div className={`rating ${localStorage.getItem('mode') == 'studet' ? '' : 'disabled'}`}>
             <p className='rating-label'>Course Difficulty Rating</p>
             <Rater total={5} rating={4}></Rater>
           </div>
@@ -197,7 +197,7 @@ export default function Course() {
             <div className='inner'>
               <div className='notification course-title'>
                 IT 207: Introdcution to Web Programming 
-                <MdModeEdit onClick={() => setEdit(true)}/>
+                <MdModeEdit onClick={() => setEdit(true)} className={`${localStorage.getItem('mode') == 'admin' ? '' : 'is-hidden'}`}/>
                 </div>
               <div className='course-cards'>
                 <div className='info-card'>
