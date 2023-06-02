@@ -27,15 +27,15 @@ export default function Navbar(handler) {
               <div className="dropdown-menu" id="dropdown-menu2" role="menu">
                 <div className="dropdown-content">
                   <div className='inner'>
-                    <div className="dropdown-item">
+                    <div className="dropdown-item" onClick={() => window.location.replace('profile')}>
                       <FaUserAlt/>
                       <p className='dropdown-item-label'>My Profile</p>
                     </div>
-                    <div className="dropdown-item">
+                    <div className="dropdown-item" onClick={() => window.location.replace('search')}>
                       <IoSearchSharp/>
                       <p>Search Page</p>
                     </div>
-                    <div className="dropdown-item">
+                    <div className="dropdown-item" onClick={() => {window.location.replace('/'); localStorage.clear()}}>
                       <MdLogout/>
                       <p>Logout</p>
                     </div>

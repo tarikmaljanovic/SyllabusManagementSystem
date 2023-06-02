@@ -56,8 +56,8 @@
       color: $grey_color;
     }
     .input-wrong {
-      border: red solid 2px;
-      color: red;
+      border: rgb(255, 54, 54) solid 2px;
+      color: rgb(255, 54, 54);
     }
     .form-buttons {
       display: flex;
@@ -128,6 +128,36 @@
     .tertiary-button:active {
       text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
       transition: ease-in-out 200ms;
+    }
+    .error {
+      margin-top: 20px;
+      background-color: rgb(245, 181, 181);
+      box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+      border-radius: 10px;
+      padding: 10px;
+      border-top: rgb(255, 54, 54) solid 10px;
+      .error-label {
+        color: rgb(230, 48, 48);
+        font-weight: 600;
+      }
+      .error-message {
+        color: rgb(230, 48, 48);
+      }
+    }
+    .success {
+      margin-top: 20px;
+      background-color: rgb(196, 245, 181);
+      box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+      border-radius: 10px;
+      padding: 10px;
+      border-top: rgb(24, 183, 66) solid 10px;
+      .success-label {
+        color: rgb(24, 183, 66);
+        font-weight: 600;
+      }
+      .success-message {
+        color: rgb(24, 183, 66);
+      }
     }
   }
 

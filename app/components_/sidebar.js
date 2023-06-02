@@ -18,17 +18,17 @@ export default function Sidebar(props) {
           <RxCross2 onClick={sidebarHandler}/>
           <Image src={MLv2.src} width={200} height={200}></Image>
           <h2 className="user-name">Tarik Maljanović</h2>
-            <button class="button is-rounded">
+            <button class="button is-rounded" onClick={() => window.location.replace('profile')}>
               <span>My Profile</span>
               <FaUserAlt/>
             </button>
-            <button class="button is-rounded">
+            <button class="button is-rounded" onClick={() => window.location.replace('search')}>
               Search Page
               <IoSearchSharp/>
             </button>
         </div>
         <div className="lower">
-          <button class="button is-rounded">
+          <button class="button is-rounded" onClick={() => {window.location.replace('/'); localStorage.clear()}}>
             Logout
             <MdLogout/>
           </button>

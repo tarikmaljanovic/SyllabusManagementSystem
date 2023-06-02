@@ -1,10 +1,14 @@
 "use client";
+import { useEffect, useState } from 'react';
 import Navbar from '../components_/navbar';
+import NavbarAdmin from '../components_/navbar_admin';
+import NavbarGuest from '../components_/navbar_guest';
 import { IoSearchSharp } from "react-icons/io5";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import Sidebar from '../components_/sidebar';
+import SidebarAdmin from '../components_/sidebar_admin';
+import SidebarGuest from '../components_/sidebar_guest';
 import './search.scss';
 
 export default function Search() {
@@ -32,12 +36,32 @@ export default function Search() {
     containerRef.current.scrollIntoView({behavior: "smooth"})
   }, [list == true])
 
+  const navHandler = () => {
+    if(localStorage.getItem('mode') == 'student') {
+      return <Navbar handler={sidebarHandler}/>
+    } else if(localStorage.getItem('mode') == 'admin') {
+      return <NavbarAdmin handler={sidebarHandler}/>
+    } else {
+      return <NavbarGuest handler={sidebarHandler}/>
+    }
+  }
+
+  const sideHandler = () => {
+    if(localStorage.getItem('mode') == 'student') {
+      return <Sidebar sidebarState={sidebar} handler={sidebarHandler}/>
+    } else if(localStorage.getItem('mode') == 'admin') {
+      return <SidebarAdmin sidebarState={sidebar} handler={sidebarHandler}/>
+    } else {
+      return <SidebarGuest sidebarState={sidebar} handler={sidebarHandler}/>
+    }
+  }
+
  
 
   return (
     <>
       <div className={`container is-fluid p-0 ${sidebar ? 'active-sidebar' : ''}`}>
-        <Navbar handler={sidebarHandler}/>
+        {navHandler()}
         <section className="section is-medium p-0">
           <form className='course-search'>
             <label className={`search-label ${searchValue ? '' : 'is-hidden' }`}>Course Search:</label>
@@ -138,9 +162,9 @@ export default function Search() {
               <p className='semester-info-right'>Year: 2</p>
             </div>
             <div className='course-list'>
-              <div className='row course-row'> 
-                <p className='course-info'>IT 207: Introduction to Web Programming</p>
-                <p className='ects'>5.0 ECTS</p>
+              <div className='row course-row' onClick={() => window.location.replace('course')}>
+                  <p className='course-info'>IT 207: Introduction to Web Programming</p>
+                  <p className='ects'>5.0 ECTS</p>
               </div>
               <div className='row course-row'>
                 <p className='course-info'>IT 206: Introduction to Mobile Programming</p>
@@ -177,7 +201,7 @@ export default function Search() {
             </div>
           </div>
         </div>
-        <Sidebar sidebarState={sidebar} handler={sidebarHandler}/>
+        {sideHandler()}
         <div className={`background ${sidebar ? '' : 'is-hidden'}`}></div>
       </div>
     </>

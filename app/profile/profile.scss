@@ -31,15 +31,15 @@
             color: $grey_color;
             text-align: left;
             @include mobile {
-              font-size: 15px;
+              font-size: 16px;
             }
           }
           .department {
-            font-size: 16px;
+            font-size: 18px;
             color: $primary_color;
             text-align: left;
             @include mobile {
-              font-size: 12px;
+              font-size: 14px;
             }
           }
         }
@@ -111,11 +111,14 @@
           .section-body {
             .section-element {
               .element-name {
-                font-size: 17px;
+                font-size: 18px;
                 font-weight: 600;
               }
               .element-text {
-                font-size: 14px;
+                font-size: 16px;
+              }
+              .input {
+                margin-top: 5px;
               }
             }
             .section-link {
@@ -123,6 +126,18 @@
               font-size: 17px;
               text-decoration: underline;
               cursor: pointer;
+            }
+            .button {
+              margin-top: 10px;
+              border: none;
+              background-color: $accent_color;
+              box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+            .button:hover {
+              background-color: #FFB94F;
+            }
+            .button:active {
+              box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 0px;
             }
           }
         }
@@ -145,4 +160,22 @@
 }
 .container.active-sidebar {
   overflow: hidden;
+}
+.success {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  z-index: 50;
+  background-color: rgb(196, 245, 181);
+  box-shadow: rgba(0, 0, 0, 0) 0px 3px 8px;
+  border-radius: 10px;
+  padding: 10px;
+  border-top: rgb(24, 183, 66) solid 10px;
+  .success-label {
+    color: rgb(24, 183, 66);
+    font-weight: 600;
+  }
+  .success-message {
+    color: rgb(24, 183, 66);
+  }
 }

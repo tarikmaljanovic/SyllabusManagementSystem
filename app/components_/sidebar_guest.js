@@ -18,11 +18,11 @@ export default function Sidebar(props) {
           <RxCross2 onClick={sidebarHandler}/>
           <Image src={MLv2.src} width={200} height={200}></Image>
           <h2 className="user-name">Guest Mode</h2>
-            <button class="button is-rounded">
+            <button class="button is-rounded" onClick={() => window.location.replace('/')}>
               <span>Login</span>
               <FiLogIn/>
             </button>
-            <button class="button is-rounded">
+            <button class="button is-rounded" onClick={() => window.location.replace('/')}>
               Register
               <BsPersonFillAdd/>
             </button>

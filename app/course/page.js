@@ -1,7 +1,11 @@
 "use client";
 import './course.scss'
 import Navbar from '../components_/navbar';
+import NavbarAdmin from '../components_/navbar_admin';
+import NavbarGuest from '../components_/navbar_guest';
 import Sidebar from '../components_/sidebar';
+import SidebarAdmin from '../components_/sidebar_admin2';
+import SidebarGuest from '../components_/sidebar_guest'
 import { FaUserCircle } from "react-icons/fa";
 import dzeli from '../../public/dzelila.png';
 import haris from '../../public/haris.png';
@@ -15,6 +19,7 @@ import { BsStarFill } from "react-icons/bs";
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css'
 import { useState } from 'react';
+import { MdModeEdit } from "react-icons/md";
 
 
 export default function Course() {
@@ -27,6 +32,8 @@ export default function Course() {
   const [trigger3, setTrigger3] = useState(true)
   const [universal, setUniversal] = useState(false)
   const [current, setCurrent] = useState(3)
+  const [edit, setEdit] = useState(false)
+  const [alert, setAlert] = useState(false)
 
   const universalCard = index => {
     setCurrent(index)
@@ -43,6 +50,10 @@ export default function Course() {
     setSidebar(!sidebar)
   }
 
+  const editHandler = () => {
+    setEdit(true)
+  }
+
   const infoHandler = targetId => {
    (document.getElementById(targetId).classList.value).includes('is-hidden') ? document.getElementById(targetId).classList.value = 'more-info' : document.getElementById(targetId).classList.value = 'more-info is-hidden'
   }
@@ -54,6 +65,26 @@ export default function Course() {
    const listHandler = targetId => {
     (document.getElementById(targetId).classList.value).includes('is-hidden') ? document.getElementById(targetId).classList.value = 'list-body' : document.getElementById(targetId).classList.value = 'list-body is-hidden'
    }
+
+   const navHandler = () => {
+    if(localStorage.getItem('mode') == 'student') {
+      return <Navbar handler={sidebarHandler}/>
+    } else if(localStorage.getItem('mode') == 'admin') {
+      return <NavbarAdmin handler={sidebarHandler}/>
+    } else {
+      return <NavbarGuest handler={sidebarHandler}/>
+    }
+  }
+
+  const sideHandler = () => {
+    if(localStorage.getItem('mode') == 'student') {
+      return <Sidebar sidebarState={sidebar} handler={sidebarHandler}/>
+    } else if(localStorage.getItem('mode') == 'admin') {
+      return <SidebarAdmin sidebarState={sidebar} handler={sidebarHandler} editHandler={editHandler}/>
+    } else {
+      return <SidebarGuest sidebarState={sidebar} handler={sidebarHandler}/>
+    }
+  }
 
    const staffInfo = [
     {
@@ -81,9 +112,11 @@ export default function Course() {
   return (
     <>
       <div className={`container is-fluid p-0 ${sidebar ? 'active-sidebar' : ''}`}>
-      <Navbar handler={sidebarHandler}/>
+      {navHandler()}
         <section class="section px-0">
-        <div className='notification p-2 course-title-mobile'>IT 207: Introdcution to Web Programming</div>
+        <div className='notification p-2 course-title-mobile'>
+          IT 207: Introdcution to Web Programming
+          </div>
           <div className='staff-section'>
             <div className='head'>
               <FaUserCircle/>
@@ -162,7 +195,10 @@ export default function Course() {
           </div>
           <div className='course-section'>
             <div className='inner'>
-              <div className='notification course-title'>IT 207: Introdcution to Web Programming</div>
+              <div className='notification course-title'>
+                IT 207: Introdcution to Web Programming 
+                <MdModeEdit onClick={() => setEdit(true)}/>
+                </div>
               <div className='course-cards'>
                 <div className='info-card'>
                   <div className='slice p-0 left'>Level:</div>
@@ -199,12 +235,18 @@ export default function Course() {
                     <RiArrowDownSLine className={`${content ? '' : 'arrow-up'}`} onClick={() => {sectionHandler('description'); setContent(!content)}}/>
                   </div>
                 </div>
-                <p className='text' id='description'>
+                <p className={`text ${edit ? 'is-hidden' : ''}`} id='description'>
                   Introduction to Web Programming is a beginners’ course in programming using  JavaScript, together with some HTML and CSS for frontend design and using PHP with framework for backend. It follows a problem-based approach which requires you
                   to design and create a website of ever-increasing sophistication as the course
                   progresses while creating design documentation, reflecting on the process, and (optionally) sharing and communicating with others on the course. The output of your
                   work will be presented as a publicly accessible website, and you will submit a portfolio.
                 </p>
+                <textarea className={`${edit ? '' : 'is-hidden'}`}>
+                Introduction to Web Programming is a beginners’ course in programming using  JavaScript, together with some HTML and CSS for frontend design and using PHP with framework for backend. It follows a problem-based approach which requires you
+                  to design and create a website of ever-increasing sophistication as the course
+                  progresses while creating design documentation, reflecting on the process, and (optionally) sharing and communicating with others on the course. The output of your
+                  work will be presented as a publicly accessible website, and you will submit a portfolio.
+                </textarea>
               </div>
               <div className='course-content'>
                 <div className='head'>
@@ -216,13 +258,20 @@ export default function Course() {
                     <RiArrowDownSLine className={`${content2 ? '' : 'arrow-up'}`} onClick={() => {sectionHandler('content'); setContent2(!content2)}}/>
                   </div>
                 </div>
-                <p className='text' id='content'>
+                <p className={`text ${edit ? 'is-hidden' : ''}`} id='content'>
                   To produce dynamic, animated, interactive and database driven web sites to prepare
                   students for internet marketing and web site administration. Students will learn
                   different languages like HTML5, CSS, JavaScript and PHP (Server-Side
                   Programming; Students will work with different technologies and software
                   components like web browsers, web servers (Apache) and database connectivity.
                 </p>
+                <textarea className={`${edit ? '' : 'is-hidden'}`}>
+                To produce dynamic, animated, interactive and database driven web sites to prepare
+                  students for internet marketing and web site administration. Students will learn
+                  different languages like HTML5, CSS, JavaScript and PHP (Server-Side
+                  Programming; Students will work with different technologies and software
+                  components like web browsers, web servers (Apache) and database connectivity.
+                </textarea>
               </div>
               <div className='course-list'>
                 <div className={`head ${list ? '' : 'is-up'}`}>
@@ -235,21 +284,21 @@ export default function Course() {
                   </div>
                 </div>
                 <div className='list-body' id='list1'>
-                  <p className='list-item'><span className='item-label'>Week 1: </span><span className='item-text'>Internet, organization and standards</span></p>
-                  <p className='list-item'><span className='item-label'>Week 2: </span><span className='item-text'>HTML Basics</span></p>
-                  <p className='list-item'><span className='item-label'>Week 3: </span><span className='item-text'>CSS and Bootstrap</span></p>
-                  <p className='list-item'><span className='item-label'>Week 4: </span><span className='item-text'>JavaScript</span></p>
-                  <p className='list-item'><span className='item-label'>Week 5: </span><span className='item-text'>jQuery</span></p>
-                  <p className='list-item'><span className='item-label'>Week 6: </span><span className='item-text'>Introduction to PHP</span></p>
-                  <p className='list-item'><span className='item-label'>Week 7: </span><span className='item-text'> PHP Rest API, Accessing Database Using PDO</span></p>
-                  <p className='list-item'><span className='item-label'>Week 8: </span><span className='item-label'>Midterm Week</span></p>
-                  <p className='list-item'><span className='item-label'>Week 9: </span><span className='item-text'>Single Page Application</span></p>
-                  <p className='list-item'><span className='item-label'>Week 10: </span><span className='item-text'>Forms and Validations</span></p>
-                  <p className='list-item'><span className='item-label'>Week 11: </span><span className='item-text'>AJAX, XML and JSON</span></p>
-                  <p className='list-item'><span className='item-label'>Week 12: </span><span className='item-text'>Cookies and Local Storage</span></p>
-                  <p className='list-item'><span className='item-label'>Week 13: </span><span className='item-text'>Authentication and Authorization (JWT) and Middleware</span></p>
-                  <p className='list-item'><span className='item-label'>Week 14: </span><span className='item-text'>OpenAPI 3.0 and Swagger</span></p>
-                  <p className='list-item'><span className='item-label'>Week 15: </span><span className='item-label'>Project Presentation</span></p>
+                  <p className='list-item'><span className='item-label'>Week 1: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> Internet, organization and standards</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='Internet, organization and standards'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 2: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> HTML Basics</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='HTML Basics'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 3: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> CSS and Bootstrap</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='CSS and Bootstrap'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 4: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> JavaScript</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='JavaScript'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 5: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> jQuery</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='jQuery'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 6: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> Introduction to PHP</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='Introduction to PHP'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 7: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> PHP Rest API, Accessing Database Using PDO</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='PHP Rest API, Accessing Database Using PDO'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 8: </span><span className='item-label'> Midterm Week</span></p>
+                  <p className='list-item'><span className='item-label'>Week 9: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> Single Page Application</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='Single Page Application'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 10: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> Forms and Validations</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='Forms and Validations'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 11: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> AJAX, XML and JSON</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='AJAX, XML and JSON'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 12: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> Cookies and Local Storage</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='Cookies and Local Storage'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 13: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> Authentication and Authorization (JWT) and Middleware</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='Authentication and Authorization (JWT) and Middleware'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 14: </span><span className={`text-item ${edit ? 'is-hidden' : '' }`}> OpenAPI 3.0 and Swagger</span><span className={`item-input ${edit ? '' : 'is-hidden' }`}><input type='text' className='input is-rounded' value='OpenAPI 3.0 and Swagger'></input></span></p>
+                  <p className='list-item'><span className='item-label'>Week 15: </span><span className='item-label'> Project Presentation</span></p>
                 </div>
               </div>
               <div className='course-list'>
@@ -270,11 +319,16 @@ export default function Course() {
                   <p className='list-item'><span className='item-label'>Final Exam: </span><span className='item-text'>30%</span></p>
                 </div>
               </div>
+              <button className={`button is-rounded save-button ${edit ? '' : 'is-hidden'}`}onClick={() =>{ setEdit(false); setAlert(true); setTimeout(() => setAlert(false), 5000)}}>Save Changes</button>
             </div>
           </div>
         </section>
-        <Sidebar sidebarState={sidebar} handler={sidebarHandler}/>
+        {sideHandler()}
         <div className={`background ${sidebar ? '' : 'is-hidden'}`}></div>
+      </div>
+      <div className={`success ${alert ? '' : 'is-hidden'}`}>
+        <p className='success-label'>Changes Saved</p>
+        <p className='success-message'>Your changes have been saved.<br/>Refresh the page if you don't seem them right away!</p>
       </div>
     </>
   )
